@@ -1,0 +1,149 @@
+새 프로젝트 
+
+- New > Spring Legacy Project > Spring MVC Project
+- Project name: "RESTTest"
+- root package: "com.test.rest"
+
+
+
+현재 프로젝트 버전 수정하기
+
+1. 자바 버전 > 11
+	- pom.xml
+	- 프로젝트 > 우측버튼 > Properties > Project facets
+	
+2. 스프링 버전 > 5.0.7
+	- pom.xml
+
+	
+	
+	
+
+
+
+REST
+- REST, Representational State Transfer
+- 웹 상의 자원(문서, 이미지, 동영상, 데이터 등)의 위치를 자원명으로 표시해서 자원의 상태를 주고 받기 위한 행동 + 표현법
+- 웹 상의 자원을 URI 자체로도 식별 가능하게 URI을 만들자(***)
+- 표준안이 없다.
+
+- REST API or RESTful API
+
+
+URI(URL) 작성
+- 회원관리 생성 > 각각의 주소 생성
+
+1. 기존 방식
+- URL > 주로 동사를 사용 + 행동 의미
+- 중간 경로(/member) > 업무 영역 의미
+- 메서드 > GET, POST 사용 > 무슨 행동인지 구분이 애매
+
+[메서드]		[URI]
+- GET			http://localhost/member/list.do				목록보기
+- POST			http://localhost/member/add.do				추가하기
+- POST			http://localhost/member/edit.do?seq=1		수정하기
+- POST			http://localhost/member/del.do?seq=1		삭제하기
+- GET			http://localhost/member/list.do?word=검색어	검색하기
+
+
+2. REST 방식
+
+[메서드]		[URI]
+- GET			http://localhost/member				목록보기
+- POST			http://localhost/member				추가하기
+- PUT			http://localhost/member/1			수정하기
+- DELETE		http://localhost/member/1			삭제하기
+- GET			http://localhost/member/검색어		검색하기
+
+
+REST API 설계 규칙
+1. URI에서 자원을 표시한다.(주로 URI의 마지막에 명사로 표현)
+2. URI에 동사를 표시하지 않는다.(무슨 행동을 하는지 URI 표현하지 말것)
+3. HTTP Method를 사용해서 행동을 표시한다.
+	a. GET:		서버로부터 리소스 요청
+	b. POST:	데이터를 서버에게 전달 + 서버측 생성
+	c. PUT:		데이터를 서버에게 전달 + 서버측 수정(전체 수정)
+	d. PATCH:	데이터를 서버에게 전달 + 서버측 수정(일부 수정)
+	e. DELETE:	데이터를 서버에게 전달 + 서버측 삭제
+
+update tblMember set
+	name = '홍길동',
+	age = 20
+		where id = 'hong';
+
+update tblMember set
+	age = 20
+		where id = 'hong';
+
+4. URI + HTTP Method = 완성
+
+5. 구분자는 '/'를 사용한다.
+6. URI의 마지막에 '/'를 적지 않는다.
+	- http://localhost/member	> member 라는 자원(페이지)
+	- http://localhost/member/  > member 라는 폴더
+7. '-' > 사용 가능(가독성)
+8. '_' > 사용 비권장(가독성)
+9. 확장자를 사용하지 않는다.
+
+10. REST API의 요청 결과(반환값)는 순수 데이터만 반환환다.
+	- JSON, XML, Text 만 반환
+	- HTML 반환(X)
+	- Ajax 용 서버라고 생각
+	- REST 방식은 클라이언트가 모든 기기/환경일 수 있다고 가정
+	
+
+
+
+
+
+MyBatis 설정
+- pom.xml > 의존성
+	- log4j > 1.2.17
+	- Servlet > 3.1.0
+	- JSP > 2.3.3
+	- Lombok
+	- JDBC
+	- MyBatis
+	- HikariCP
+
+- root-context.xml
+
+
+REST API Server 구축
+- 클라이언트 > 브라우저(ajax), 모바일 앱, JavaScript Framework 등..
+- 요청 URI > RESTful 설계
+- 요청/응답 데이터 > JSON 기반
+
+업무
+- tblAddress > CRUD
+
+파일
+- "com.test.rest.controller" > "AddressController.java"
+- "com.test.rest.model" > "AddressDAO.java"
+                        > "AddressDTO.java"
+
+- views > 안 만든다.
+
+                        
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
