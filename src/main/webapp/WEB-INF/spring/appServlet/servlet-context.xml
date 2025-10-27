@@ -23,6 +23,10 @@
 	
 	<context:component-scan base-package="com.test.rest" />
 	
+	<!-- Swagger -->
+	<resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"></resources>
+	<resources location="classpath:/META-INF/resources/webjars/" mapping="/webjars/**"></resources>
+	
 	
 	
 </beans:beans>

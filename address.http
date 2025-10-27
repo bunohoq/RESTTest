@@ -1,0 +1,41 @@
+//1. address.http
+
+//추가하기
+POST http://localhost:8080/rest/address
+Content-Type: application/json 
+
+{
+    "name" : "사자",
+    "age" : 6,
+    "gender": "f",
+    "address":"서울시 강남구 역삼동"
+}
+
+###
+
+//목록보기
+
+GET http://localhost:8080/rest/address
+
+###
+
+
+//수정하기
+
+PUT http://localhost:8080/rest/address/104
+Content-Type: application/json
+
+{
+    "name" : "하마",
+    "age" : 6,
+    "gender": "f",
+    "address":"서울시 강남구 역삼동"
+}
+
+###
+
+//삭제하기
+
+DELETE http://localhost:8080/rest/address/104
+###
+

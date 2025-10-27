@@ -19,18 +19,22 @@
 			values (seqAddress.nextVal, #{name}, #{age}, #{address}, #{gender})
 	</insert>
 	
+	<select id="list" resultType="adto">
+		select * from tblAddress
+	</select>
+	
+	<update id="edit" parameterType="adto">
+		update tblAddress set
+			name = #{name},
+			age = #{age},
+			gender = #{gender},
+			address = #{address}
+				where seq = #{seq}
+	</update>
+	
+	<delete id="del" parameterType="String">
+		delete from tblAddress
+			where seq = #{seq}
+	</delete>
+	
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
